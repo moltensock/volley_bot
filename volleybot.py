@@ -6,6 +6,7 @@ def send_message(sender, message):
     authorize.method('messages.send', {'user_id': sender, 'message': message, 'random_id': get_random_id()})
 
 last = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+people = []
 
 token = "6b1368a70a865a9f6307bfce834116c16aedad1ba47315f1a19d3cd4c363d51eac4519c81e6a90cb1f9a1"
 authorize = vk_api.VkApi(token=token)
@@ -13,7 +14,7 @@ longpoll = VkLongPoll(authorize)
 
 for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
-        ed = 100212567 #НЕ ЗАБУДЬ ААААААААААААААААААААААААААААААААААА 59181636
+        ed = 59181636 #100212567
         received_message = event.text
         rm = received_message.lower()
         sender = event.user_id
@@ -36,7 +37,7 @@ for event in longpoll.listen():
             #        false = 1
             #    else:
             #        a += 1
-            if i == 4: #НЕ ЗАБУДЬ ААААААААААААААААААААААААААААААААААААААААААААААААААААААА 24
+            if i == 24:
                 send_message(sender, "⚠ Упс...\n\n• Набор на ДАННУЮ тренировку закончен, мест больше нет!\n\n✅ Следите за информацией о новых тренировках в группе секции: vk.com/ssk_alliance_volley")
                 false = 1
             if false != 1:
@@ -49,5 +50,5 @@ for event in longpoll.listen():
                     for i in range(len(people)):
                         itog += '{}. '.format(i + 1) + people[a] + "\n"
                         a += 1
-                    if i == 3: #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 23
+                    if i == 23: 
                         send_message(ed, itog)
