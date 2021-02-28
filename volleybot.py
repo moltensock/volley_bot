@@ -24,17 +24,18 @@ for event in longpoll.listen():
         if rm[:6] == 'секция':
             false = 0
             for i in range(len(people)):
-                if received_message[7:] == people[i]:
-                    send_message(sender, "Ты уже есть в списках")
+                if received_message[7:] == people[i] or sender == last[i]:
+                    send_message(sender, "Ты уже есть в списках!")
                     false = 1
+                    break
                 else:
                     i += 1
-            for a in range(len(last)):
-                if sender == last[a]:
-                    send_message(sender, "Ты либо был(а) на прошлой тренировке, либо уже записал(а) себя на эту!")
-                    false = 1
-                else:
-                    a += 1
+            #for a in range(len(last)):
+            #    if sender == last[a]:
+            #        send_message(sender, "Ты либо был(а) на прошлой тренировке, либо уже записал(а) себя на эту!")
+            #        false = 1
+            #    else:
+            #        a += 1
             if i == 4: #НЕ ЗАБУДЬ ААААААААААААААААААААААААААААААААААААААААААААААААААААААА 24
                 send_message(sender, "⚠ Упс...\n\n• Набор на ДАННУЮ тренировку закончен, мест больше нет!\n\n✅ Следите за информацией о новых тренировках в группе секции: vk.com/ssk_alliance_volley")
                 false = 1
