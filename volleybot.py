@@ -15,6 +15,7 @@ longpoll = VkLongPoll(authorize)
 for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text:
         ed = 59181636 #100212567
+        lesha = 560170062
         received_message = event.text
         rm = received_message.lower()
         sender = event.user_id
@@ -22,6 +23,7 @@ for event in longpoll.listen():
             i = 0
             people = []
             send_message(ed, "Набор на тренировку начался")
+            send_message(lesha, "Набор на тренировку начался")
         if rm[:6] == 'секция':
             false = 0
             for i in range(len(people)):
@@ -52,3 +54,4 @@ for event in longpoll.listen():
                         a += 1
                     if i == 23: 
                         send_message(ed, itog)
+                        send_message(lesha, itog)
