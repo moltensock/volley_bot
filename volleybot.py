@@ -24,6 +24,16 @@ for event in longpoll.listen():
             people = []
             send_message(ed, "Набор на тренировку начался")
             send_message(lesha, "Набор на тренировку начался")
+        if rm == "список":
+            itog1 = ""
+            a1 = 0
+            for i in range(len(people)):
+                itog1 += '{}. '.format(a1 + 1) + people[a1] + "\n"
+                a1 += 1
+            if itog != "":
+                send_message(lesha, itog1)
+            else:
+                send_message(lesha, "Список пуст")
         if rm[:6] == 'секция':
             false = 0
             for i in range(len(people)):
@@ -33,12 +43,6 @@ for event in longpoll.listen():
                     break
                 else:
                     i += 1
-            #for a in range(len(last)):
-            #    if sender == last[a]:
-            #        send_message(sender, "Ты либо был(а) на прошлой тренировке, либо уже записал(а) себя на эту!")
-            #        false = 1
-            #    else:
-            #        a += 1
             if i == 24:
                 send_message(sender, "⚠ Упс...\n\n• Набор на ДАННУЮ тренировку закончен, мест больше нет!\n\n✅ Следите за информацией о новых тренировках в группе секции: vk.com/ssk_alliance_volley")
                 false = 1
